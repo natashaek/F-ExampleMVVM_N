@@ -7,7 +7,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.examplemvvm_n.databinding.ActivityMainBinding
 import com.example.examplemvvm_n.ui.viewmodel.QuoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         quoteViewModel.onCreate()
 
         quoteViewModel.quoteModel.observe(this, Observer {
-            binding.tvQuote.text = it.quote
+            binding.tvQuote.text = it!!.quote
             binding.tvAuthor.text = it.author
         })
 
